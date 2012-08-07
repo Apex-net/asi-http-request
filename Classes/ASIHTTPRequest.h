@@ -369,6 +369,10 @@ typedef void (^ASIDataBlock)(NSData *data);
     // If not nil and the URL scheme is https, CFNetwork configured to supply a client certificate
     SecIdentityRef clientCertificateIdentity;
 	NSArray *clientCertificates;
+
+	// Security level of a socket stream.
+	// By default, a stream’s security level is kCFStreamSocketSecurityLevelNegotiatedSSL.
+	NSString *securityLevel;
 	
 	// Details on the proxy to use - you could set these yourself, but it's probably best to let ASIHTTPRequest detect the system proxy settings
 	NSString *proxyHost;
@@ -969,6 +973,7 @@ typedef void (^ASIDataBlock)(NSData *data);
 @property (assign, readonly) unsigned long long partialDownloadSize;
 @property (assign) BOOL shouldRedirect;
 @property (assign) BOOL validatesSecureCertificate;
+@property (retain) NSString *securityLevel;
 @property (assign) BOOL shouldCompressRequestBody;
 @property (retain) NSURL *PACurl;
 @property (retain) NSString *authenticationScheme;
